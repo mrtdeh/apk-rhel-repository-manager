@@ -1,0 +1,14 @@
+logger:
+  log_dir: .
+  log_level: info
+  log_rotate_time_by_day: 2
+
+app:
+  request_timeout: 999999999
+  worker: '1'
+  bind: 0.0.0.0:8080
+  upload_dir: /tmp
+
+
+reprepro:
+  base_dir: /opt/reprepro

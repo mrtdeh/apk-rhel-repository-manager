@@ -1,0 +1,8 @@
+version: "3.3"
+services: 
+  app:
+    image: "reprepro:latest"
+    ports: 
+      - "5002:443"
+    volumes: 
+      - "/home/babaee/repo/debian:/opt/reprepro"

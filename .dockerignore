@@ -1,0 +1,19 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+*.log
+.git
+Dockerfile
+.DS_Store
+.gitignore
+.dockerignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+reprepro.tar.gz
+drone_plugin_send_deb
+docker-compose.yml
