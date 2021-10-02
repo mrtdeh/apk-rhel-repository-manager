@@ -5,4 +5,4 @@ services:
     ports: 
       - "5002:443"
     volumes: 
-      - "/home/babaee/repo/debian:/opt/reprepro"
+      - "/usr/share/nginx/html/repo:/opt/reprepro"
