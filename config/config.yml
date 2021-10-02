@@ -6,7 +6,7 @@ logger:
 app:
   request_timeout: 999999999
   worker: '1'
-  bind: 127.0.0.1:8080
+  bind: 127.0.0.1:80
   upload_dir: /tmp
 
 
