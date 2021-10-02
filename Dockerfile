@@ -1,5 +1,5 @@
 FROM debian as BaseReprepo
-LABEL version=1.1
+LABEL version=1.2
 ONBUILD RUN date
 RUN apt update
 RUN apt-get install python  pip reprepro nginx -y && apt-get clean 
