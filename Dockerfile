@@ -2,7 +2,7 @@ FROM debian as BaseReprepo
 LABEL version=1.2
 ONBUILD RUN date
 RUN apt update
-RUN apt-get install python  pip reprepro nginx -y && apt-get clean 
+RUN apt-get install python  pip  -y && apt-get clean 
 
 FROM BaseReprepo as PipInstall
 COPY ./requirements.txt requirements.txt
