@@ -19,7 +19,7 @@ RUN rm -rf /usr/share/apk_reprepro/reprepro.tar.gz
 
 FROM CopyFiles as Build
 
-EXPOSE 80 443
+EXPOSE 8080 80 443
 WORKDIR /usr/share/apk_reprepro/
 
 CMD ["/usr/share/apk_reprepro/run.sh"]
