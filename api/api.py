@@ -29,7 +29,7 @@ class RepreproListPackages(flask_restful.Resource):
 
     def get(self):
         logger.info("ping")
-        return "not prepared yet"
+        return "not prepared yet 2222"
 
         # reprepro = Reprepro()
         # list_packages = reprepro.reprepro_list_packages()
