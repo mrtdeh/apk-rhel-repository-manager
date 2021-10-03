@@ -1,8 +1,9 @@
 version: "3.3"
 services: 
   app:
-    image: "reprepro:latest"
+    image: "reprepro:2"
     ports: 
       - "5002:443"
+      - "8080:8080"
     volumes: 
       - "/usr/share/nginx/html/repo:/opt/reprepro"

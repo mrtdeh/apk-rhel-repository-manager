@@ -12,7 +12,7 @@ FROM PipInstall as CopyFiles
 RUN mkdir -p /usr/share/apk_reprepro
 RUN mkdir -p /etc/apk_reprepro
 RUN mkdir -p /opt/reprepro
-COPY  . /usr/share/apk_reprepro  
+COPY . /usr/share/apk_reprepro  
 COPY ./config/config.yml /etc/apk_reprepro/
 RUN rm -rf /usr/share/apk_reprepro/reprepro.tar.gz
 
