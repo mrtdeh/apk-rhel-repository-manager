@@ -160,3 +160,27 @@ class Reprepro(object):
         check_out_put = reprepro_remove_package_parser(output, status)
 
         return check_out_put
+
+
+
+def list_packages_parser(packages):
+    list_packages = list()
+    packages_info = dict()
+    try:
+        for pkg in packages:
+            template = {"package_name": None, "architectures": None,
+                        "codename": None, "component": None}
+
+            template["package_name"] = pkg.name
+            # template["codename"] = codename
+            # template["component"] = component
+            # template["architectures"] = architectures
+            template["version"] = pkg.version
+            list_packages.append(template)
+        len_packages = len(list_packages)
+        packages_info["count"] = len_packages
+        packages_info["packages"] = list_packages
+        return packages_info, 200
+    except Exception:
+        logger.error("an error in parse list packages:", exc_info=True)
+        return "error in parse output command", 500

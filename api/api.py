@@ -35,12 +35,10 @@ class RepreproListPackages(flask_restful.Resource):
     def get(self):
         logger.info("ping")
 
-        list_packages  = repo.findall()
-        
-        return list_packages
 
-        # reprepro = Reprepro()
-        # list_packages = reprepro.reprepro_list_packages()
+        
+        return list_packages_parser(repo)
+
         # return list_packages
         
 
@@ -96,3 +94,29 @@ class RemovePackage(flask_restful.Resource):
         # reprepro = Reprepro()
         # status = reprepro.reprepro_remove_package(package_name=name)
         return "not prepared yet"
+
+
+
+
+#============================================================================================================
+def list_packages_parser(packages):
+    list_packages = list()
+    packages_info = dict()
+    try:
+        for pkg in packages:
+            template = {"package_name": None, "architectures": None,
+                        "codename": None, "component": None}
+
+            template["package_name"] = pkg.name
+            # template["codename"] = codename
+            # template["component"] = component
+            # template["architectures"] = architectures
+            template["version"] = pkg.version
+            list_packages.append(template)
+        len_packages = len(list_packages)
+        packages_info["count"] = len_packages
+        packages_info["packages"] = list_packages
+        return packages_info, 200
+    except Exception:
+        logger.error("an error in parse list packages:", exc_info=True)
+        return "error in parse output command", 500
