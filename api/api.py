@@ -143,6 +143,6 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     cmd = Popen(["rm","-rf",os.path.join(repo_path,filename) ],stdout=PIPE, stderr=PIPE)
 
     logger.info(filename)
-    logger.info(cmd)
+    logger.info(cmd.stdout.readline())
 
     return 
