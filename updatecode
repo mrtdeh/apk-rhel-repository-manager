@@ -5,4 +5,4 @@
 git pull
 docker build --tag=reprepro:2 .
 docker-compose up -d --force-recreate
-docker-compose logs
+docker-compose logs -f

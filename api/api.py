@@ -130,15 +130,18 @@ def list_packages_parser(packages):
 
 def remove_package(package_name, version=None, release=None,timeout=None):
 
-    
+    filter = "*"
     
     if not version:
         version = "*"
     if not release:
         release = "*"
-    filename = "{0}-{1}-{2}*.rpm".format(package_name,version,release)
+        filter = ""
+
+    
+    filename = "{0}-{1}-{2}{3}.rpm".format(package_name,version,release,filter)
     Popen(["rm","-rf",os.path.join(repo_path,filename) ])
 
-    logger.info(["rm","-rf",os.path.join(repo_path,filename) ])
+    logger.info(filename)
 
     return 
