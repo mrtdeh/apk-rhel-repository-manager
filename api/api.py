@@ -11,7 +11,7 @@ import os
 config_app = get_config()
 logger = get_logger(__name__)
 
-target_repo_path = "/usr/share/nginx/html/repo/"
+target_repo_path = "/opt/reprepro/"
 
 target_platform = "rhel-8-server-rpms/"
 
@@ -29,7 +29,8 @@ class RepreproListPackages(flask_restful.Resource):
 
     def get(self):
         logger.info("ping")
-        return "not prepared yet 2222"
+        
+        return "not prepared yet 22222323"
 
         # reprepro = Reprepro()
         # list_packages = reprepro.reprepro_list_packages()
