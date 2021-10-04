@@ -6,7 +6,7 @@ from logger.logger import get_logger
 from reprepro_tools.reprepro import Reprepro
 from config.config import get_config
 from subprocess import Popen, PIPE
-
+import json
 import repomd;
 
 import os
@@ -85,7 +85,7 @@ class RemovePackage(flask_restful.Resource):
 
     def delete(self):
         data = request.data.decode('utf-8')
-        data  = request.get_json() 
+        data  = json.load(data)
         print("delete request: " +data)
         name = data.get("package_name", None)
         if not name:
