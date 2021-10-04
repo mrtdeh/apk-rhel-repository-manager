@@ -141,8 +141,13 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     
     filename = "{0}-{1}-{2}{3}.rpm".format(package_name,version,release,filter)
     cmd = Popen(["rm","-rf",os.path.join(repo_path,filename) ],stdout=PIPE, stderr=PIPE)
-    out, err = cmd.communicate()
-    logger.info(filename)
-    logger.info(str(out))
+
+    with Popen(cmd, stdout=PIPE, bufsize=1, universal_newlines=True) as p:
+        for line in p.stdout:
+            logger.info(line) # process line here
+
+    # if p.returncode != 0:
+    #     raise CalledProcessError(p.returncode, p.args)
+   
 
     return 
