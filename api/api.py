@@ -86,10 +86,10 @@ class RemovePackage(flask_restful.Resource):
     def delete(self):
         data = request.get_data()
         # print("delete request: " +data)
-        data  = json.loads(data.decode('utf-8'))
-        print(data)
+        mydata  = json.loads(data.decode('utf-8'))
+        print(mydata)
 
-        name = data.get("package_name", None)
+        name = mydata.get("package_name", None)
         if not name:
             return "key:package_name not found", 400
         remove_package(name)
