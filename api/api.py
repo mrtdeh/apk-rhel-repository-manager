@@ -88,10 +88,11 @@ class RemovePackage(flask_restful.Resource):
         name = data.get("package_name", None)
         if not name:
             return "key:package_name not found", 400
-        file_exist = os.path.isfile(os.path.join(repo_path,name))
-        if file_exist:
-            Popen(["rm","-rf",os.path.join(repo_path,name)])
-            return "OK"
+        remove_package(name)
+        # file_exist = os.path.isfile(os.path.join(repo_path,name))
+        # if file_exist:
+        #     Popen(["rm","-rf",os.path.join(repo_path,name)])
+        #     return "OK"
         return "file not exist",403
 
 
@@ -119,3 +120,17 @@ def list_packages_parser(packages):
     except Exception:
         logger.error("an error in parse list packages:", exc_info=True)
         return "error in parse output command", 500
+
+
+def remove_package(package_name, version=None, release=None,timeout=None):
+
+    
+    
+    if not version:
+        version = "*"
+    if not release:
+        release = "*"
+
+    Popen(["rm","-rf","{0}-{1}-{2}*.rpm".format(package_name,version,release)])
+
+    return 
