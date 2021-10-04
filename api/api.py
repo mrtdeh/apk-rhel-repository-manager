@@ -84,7 +84,7 @@ class RemovePackage(flask_restful.Resource):
     decorators = [jwt_required()]
 
     def delete(self):
-        data = request.data.decode('utf-8')
+        data = request.json()
         print("delete request: " +data["package_name"])
         data  = json.dumps(data)
         print("delete request dict: " +data)
