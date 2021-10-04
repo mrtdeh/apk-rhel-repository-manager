@@ -1,8 +1,8 @@
-FROM debian as BaseReprepo
-LABEL version=1.2
+FROM centos as BaseReprepo
+LABEL version=1.3
 ONBUILD RUN date
-RUN apt update
-RUN apt-get install python  pip  -y && apt-get clean 
+RUN yum update
+RUN yum install python  pip createrepo -y && yum clean all
 
 FROM BaseReprepo as PipInstall
 COPY ./requirements.txt requirements.txt
