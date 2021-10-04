@@ -13,18 +13,12 @@ import os
 config_app = get_config()
 logger = get_logger(__name__)
 
-target_repo_path = "/opt/reprepro/"
+target_repo_path = "/usr/share/nginx/html/repo/"
 
 target_platform = "rhel-8-server-rpms/"
 
-""" Parses the repomd.xml file existing in the given repo directory. """
-repodir = os.path.abspath(target_repo_path)
-repomdxml = os.path.join(repodir, 'repodata/repomd.xml')
 
-repo = repomd.load(repodir)
-# repo.parse(repomdxml)
-
-# repo = repomd.load('ftp://' + target_repo_path)
+repo = repomd.load('ftp://' + target_repo_path)
 
 
 class Ping(flask_restful.Resource):
