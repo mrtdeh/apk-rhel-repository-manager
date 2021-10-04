@@ -1,7 +1,7 @@
 FROM centos as BaseReprepo
 LABEL version=1.3
 ONBUILD RUN date
-RUN yum update
+RUN yum update -y
 RUN yum install python  pip createrepo -y && yum clean all
 
 FROM BaseReprepo as PipInstall
