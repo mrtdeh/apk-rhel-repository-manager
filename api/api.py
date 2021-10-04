@@ -134,7 +134,7 @@ def remove_package(package_name, version=None, release=None,timeout=None):
         version = "*"
     if not release:
         release = "*"
-
-    Popen(["rm","-rf","{0}-{1}-{2}*.rpm".format(package_name,version,release)])
+    filename = "{0}-{1}-{2}*.rpm".format(package_name,version,release)
+    Popen(["rm","-rf",os.path.join(repo_path,filename) ])
 
     return 
