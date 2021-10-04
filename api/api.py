@@ -108,9 +108,9 @@ def list_packages_parser(packages):
                         "codename": None, "component": None}
 
             template["package_name"] = pkg.name
-            # template["codename"] = codename
+            template["codename"] = "Ootpa"
             # template["component"] = component
-            # template["architectures"] = architectures
+            template["architectures"] = pkg.arch
             template["version"] = pkg.version
             list_packages.append(template)
         len_packages = len(list_packages)
