@@ -17,6 +17,12 @@ target_repo_path = "/opt/reprepro/"
 
 target_platform = "rhel-8-server-rpms/"
 
+""" Parses the repomd.xml file existing in the given repo directory. """
+repodir = os.path.abspath(target_repo_path)
+repomdxml = os.path.join(repodir, 'repodata/repomd.xml')
+
+repo = repomd(repodir)
+repo.parse(repomdxml)
 
 # repo = repomd.load('ftp://' + target_repo_path)
 
