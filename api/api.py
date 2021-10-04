@@ -76,7 +76,7 @@ class IncludePackage(flask_restful.Resource):
             Popen(["createrepo" ,"-d" ,"--update",target_repo_path])
 
 
-            return "OK"
+            return "OK",200
         return 403, "error. try again"
 
 
