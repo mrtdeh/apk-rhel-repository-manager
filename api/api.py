@@ -18,7 +18,7 @@ target_repo_path = "/opt/reprepro/"
 target_platform = "rhel-8-server-rpms/"
 
 
-repo = repomd.load('ftp://' + target_repo_path)
+# repo = repomd.load('ftp://' + target_repo_path)
 
 
 class Ping(flask_restful.Resource):
@@ -35,9 +35,9 @@ class RepreproListPackages(flask_restful.Resource):
     def get(self):
         logger.info("ping")
 
-        list_packages  = repo.findall()
+        # list_packages  = repo.findall()
         
-        return list_packages
+        return "list_packages"
 
         # reprepro = Reprepro()
         # list_packages = reprepro.reprepro_list_packages()
