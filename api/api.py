@@ -1,3 +1,5 @@
+from array import array
+from posixpath import join
 from flask_jwt import jwt_required
 from flask import flash, request
 import flask_restful
@@ -136,5 +138,7 @@ def remove_package(package_name, version=None, release=None,timeout=None):
         release = "*"
     filename = "{0}-{1}-{2}*.rpm".format(package_name,version,release)
     Popen(["rm","-rf",os.path.join(repo_path,filename) ])
+
+    logger.log(["rm","-rf",os.path.join(repo_path,filename) ])
 
     return 
