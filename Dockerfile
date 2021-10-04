@@ -6,7 +6,7 @@ RUN yum install python3  python3-pip createrepo -y && yum clean all
 
 FROM BaseReprepo as PipInstall
 COPY ./requirements.txt requirements.txt
-RUN pip install  --no-cache-dir  -r requirements.txt
+RUN pip3 install  --no-cache-dir  -r requirements.txt
 
 FROM PipInstall as CopyFiles
 RUN mkdir -p /usr/share/apk_reprepro
