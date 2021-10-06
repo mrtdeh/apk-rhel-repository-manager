@@ -9,7 +9,8 @@ from reprepro_tools.reprepro import Reprepro
 from config.config import get_config
 from subprocess import Popen, PIPE
 import json
-import repomd;
+import repomd
+import glob
 
 import os
 config_app = get_config()
@@ -145,8 +146,8 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     # while True:
     #     line = p.stdout.readline()
     #     if not line: break
-
-    with Popen(["rm","-rf",os.path.join(repo_path,filename) ],stdout=PIPE, stderr=PIPE) as p:
+    files = glob.glob(os.path.join(repo_path,filename))
+    with Popen(["rm","-rf"]+files,stdout=PIPE, stderr=PIPE) as p:
         for line in p.stderr.readline():
             logger.info(line) # process line here
     
