@@ -140,23 +140,20 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     if not release:
         release = "*"
         filter = ""
-
     
     filename = "{0}-{1}-{2}{3}.rpm".format(package_name,version,release,filter)
-    
-
-    # while True:
-    #     line = p.stdout.readline()
-    #     if not line: break
     files = glob.glob(os.path.join(repo_path,filename))
-    with Popen(["rm","-rf"]+files,stdout=PIPE, stderr=PIPE) as p:
-        for line in p.stderr.readline():
-            logger.info(line) # process line here
+
+    try:
+
+        Popen(["rm","-rf"]+files,stdout=PIPE, stderr=PIPE)
+        Popen(["createrepo","-u","--update",repo_path],stdout=PIPE, stderr=PIPE)
+
+    except Exception:
+        logger.error("an error in removig package:", exc_info=True)
+        return "error in parse output command", 500
     
     logger.info(str.join(" ",["rm","-rf",os.path.join(repo_path,filename) ])) 
-    # if p.returncode != 0:
 
-    #     raise CalledProcessError(p.returncode, p.args)
-   
 
     return 
