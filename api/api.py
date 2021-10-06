@@ -5,7 +5,7 @@ from flask import flash, request
 import flask_restful
 from werkzeug.utils import secure_filename
 from logger.logger import get_logger
-from reprepro_tools.reprepro import Reprepro
+# from reprepro_tools.reprepro import Reprepro
 from config.config import get_config
 from subprocess import Popen, PIPE
 import json
