@@ -94,11 +94,13 @@ class RemovePackage(flask_restful.Resource):
         logger.info(mydata)
 
         name = mydata.get("package_name", None)
+        ver = mydata.get("version", None)
+        rel = mydata.get("release", None)
         logger.info(name)
 
         if not name:
             return "key:package_name not found", 400
-        remove_package(name)
+        remove_package(name,ver,rel)
        
         return "file deleted",200
 
