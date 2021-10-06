@@ -147,7 +147,7 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     #     if not line: break
 
     with Popen(["rm","-rf",os.path.join(repo_path,filename) ],stdout=PIPE, stderr=PIPE) as p:
-        for line in p.stdout:
+        for line in p.stdout.readline():
             logger.info(line) # process line here
 
     # if p.returncode != 0:
