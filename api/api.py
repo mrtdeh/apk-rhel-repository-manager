@@ -149,7 +149,8 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     with Popen(["rm","-rf",os.path.join(repo_path,filename) ],stdout=PIPE, stderr=PIPE) as p:
         for line in p.stdout.readline():
             logger.info(line) # process line here
-
+    
+    logger.info(str.join(" ",["rm","-rf",os.path.join(repo_path,filename) ])) 
     # if p.returncode != 0:
     #     raise CalledProcessError(p.returncode, p.args)
    
