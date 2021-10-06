@@ -147,7 +147,7 @@ def remove_package(package_name, version=None, release=None,timeout=None):
     try:
 
         Popen(["rm","-rf"]+files,stdout=PIPE, stderr=PIPE)
-        Popen(["createrepo","-u","--update",repo_path],stdout=PIPE, stderr=PIPE)
+        Popen(["createrepo","-u","--update",target_repo_path],stdout=PIPE, stderr=PIPE)
 
     except Exception:
         logger.error("an error in removig package:", exc_info=True)
