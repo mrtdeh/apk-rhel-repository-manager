@@ -5,7 +5,6 @@ from flask import flash, request
 import flask_restful
 from werkzeug.utils import secure_filename
 from logger.logger import get_logger
-# from reprepro_tools.reprepro import Reprepro
 from config.config import get_config
 from subprocess import Popen, PIPE
 import json
@@ -70,8 +69,7 @@ class IncludePackage(flask_restful.Resource):
             file_path = os.path.join(config_app["app"]["upload_dir"], filename)
             file.save(file_path)
 
-            
-
+        
             Popen(["mkdir","-p",repo_path])
             Popen(["mv","-f",file_path,repo_path])
             Popen(["createrepo" ,"-d" ,"--update",target_repo_path])
